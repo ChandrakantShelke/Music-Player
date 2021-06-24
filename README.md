@@ -55,7 +55,7 @@ Dahiwal Sir (From Govt.Polytechnic Aurangabad, Maharashtra, India)
 ## Report of my Mini Project :- 
 [Python Mini Project by 196028 Chandrakant Shelke CO.pdf](https://github.com/GPAMBD/Mp3-Music-Player-Application/files/6710496/Python.Mini.Project.by.196028.Chandrakant.Shelke.CO.pdf)
 
-## Actual working of Mp3 Music Player :-
+## Actual working of My Mp3 Music Player :-
 https://user-images.githubusercontent.com/75568186/123296738-8a493000-d534-11eb-9926-a58c20d7036f.mp4
 
 ## Available only for you :
