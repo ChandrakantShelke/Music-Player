@@ -3,8 +3,9 @@ Sometimes it only takes one good song to bring back thousands of good old memori
 
 ## INTRODUCTION :
 The main objective of this project is to allow users to play MP3 and digital 
-audio files. To be engaging for users, the application has to have a simple 
-but beautiful user interface.
+audio files. To be engaging for users.This GUI project is developed using Python programming language.
+
+### The application has to have a simple but beautiful user interface.
 
 MP3 player is a device built to play and listen songs.The player was built 
 using Python language. A GUI implementation of the application was 
