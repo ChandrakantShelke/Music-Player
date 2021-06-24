@@ -5,7 +5,7 @@ Sometimes it only takes one good song to bring back thousands of good old memori
 The main objective of this project is to allow users to play MP3 and digital 
 audio files. To be engaging for users.This GUI project is developed using Python programming language.
 
-### The application has to have a simple but beautiful user interface.
+The application has to have a simple but beautiful user interface.
 
 MP3 player is a device built to play and listen songs.The player was built 
 using Python language. A GUI implementation of the application was 
@@ -53,7 +53,7 @@ Dahiwal Sir (From Govt.Polytechnic Aurangabad, Maharashtra, India)
 • Also take the help of some of the youtube videos. 
 
 
-## Report of my Mini Project :- 
+## Report of My Mini Project :- 
 [Python Mini Project by 196028 Chandrakant Shelke CO.pdf](https://github.com/GPAMBD/Mp3-Music-Player-Application/files/6710496/Python.Mini.Project.by.196028.Chandrakant.Shelke.CO.pdf)
 
 ## Actual working of My Mp3 Music Player :-
