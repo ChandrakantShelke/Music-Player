@@ -52,6 +52,10 @@ Dahiwal Sir (From Govt.Polytechnic Aurangabad, Maharashtra, India)
 
 • Also take the help of some of the youtube videos. 
 
+## Output Screen :
+![Annotation 2021-06-27 124259](https://user-images.githubusercontent.com/75568186/123535983-4d07bc80-d745-11eb-9b58-6fe20e8e6983.jpg)
+
+
 
 ## Report of My Mini Project :- 
 [Python Mini Project by 196028 Chandrakant Shelke CO.pdf](https://github.com/GPAMBD/Mp3-Music-Player-Application/files/6710496/Python.Mini.Project.by.196028.Chandrakant.Shelke.CO.pdf)
