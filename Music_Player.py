@@ -1,35 +1,42 @@
 #Mini-Project Program By Chandrakant Shelke(196028_CO)
 #We import the modules & library which we are needed
 import os
-import tkinter as tk
-import pickle
-from tkinter import filedialog
-from pygame import mixer
-from tkinter import PhotoImage
+import tkinter as tk #creating the graphical user interface.
+import pickle #serializing and deserializing Python objects.
+from tkinter import filedialog #open a file dialog to choose directories.
+from pygame import mixer #handling audio playback.
+from tkinter import PhotoImage #handle images.
 
-class Player(tk.Frame):
+
+class Player(tk.Frame): # inherits from tk.Frame
+
+	#The __init__ method initializes the player:
 	def __init__(self, master=None):
 		super().__init__(master)
 		self.master = master
 		self.pack()
 		mixer.init()
 
+		#Checks if a file songs.pickle exists:
+		#If it exists, it loads the playlist from the file.
+		#If not, it initializes an empty playlist.
 		if os.path.exists('songs.pickle'):  
 			with open('songs.pickle', 'rb') as f:
 				self.playlist = pickle.load(f)
 		else:
 			self.playlist=[]
 
-		self.current = 0
-		self.paused = True
-		self.played = False
+		self.current = 0 #keep track of the currently playing song index.
+		self.paused = True #check if the song is paused.
+		self.played = False #check if a song has been played.
 
+		#Calls methods to create the GUI components.
 		self.create_frames()
 		self.track_widgets()
 		self.control_widgets()
 		self.tracklist_widgets()
-#Creating of 3 frames in a window
-
+		
+	#Creating of 3 frames in a window
 	def create_frames(self):
 		#Creating first frame of Song Track
 		self.track = tk.LabelFrame(self, text='Song Track',
@@ -38,7 +45,7 @@ class Player(tk.Frame):
 		self.track.config(width=410,height=300)
 		self.track.grid(row=0, column=0, padx=10)
 
-        #Creating Second frame for Tracklist or Playlist
+                #Creating Second frame for Tracklist or Playlist
 		self.tracklist = tk.LabelFrame(self, text=f'PlayList - {str(len(self.playlist))}',
 							font=("times new roman",15,"bold"),
 							bg="black",fg="white",bd=5,relief=tk.GROOVE)
@@ -94,11 +101,13 @@ class Player(tk.Frame):
 		self.slider['command'] = self.change_volume
 		self.slider.grid(row=0, column=4, padx=5)
 
-
+	#Creating Tracklist Widgets
 	def tracklist_widgets(self):
+		#This method creates widgets for the tracklist frame.
 		self.scrollbar = tk.Scrollbar(self.tracklist, orient=tk.VERTICAL)
 		self.scrollbar.grid(row=0,column=1, rowspan=5, sticky='ns')
 
+		#Creates a vertical scrollbar.
 		self.list = tk.Listbox(self.tracklist, selectmode=tk.SINGLE,
 					 yscrollcommand=self.scrollbar.set, selectbackground='sky blue')
 
@@ -108,7 +117,10 @@ class Player(tk.Frame):
 		self.scrollbar.config(command=self.list.yview)
 		self.list.grid(row=0, column=0, rowspan=5)
 
+	#Creates a listbox to display the playlist and binds it to a 
+	#double-click event to play the selected song.
 	def retrieve_songs(self):
+		#This method retrieves songs from a directory.
 		self.songlist = []
 		directory = filedialog.askdirectory()
 		for root_, dirs, files in os.walk(directory):
@@ -116,30 +128,36 @@ class Player(tk.Frame):
 					if os.path.splitext(file)[1] == '.mp3':
 						path = (root_ + '/' + file).replace('\\','/')
 						self.songlist.append(path)
-
+		#Opens a directory dialog to select a directory and 
+		#adds all .mp3 files to self.songlist.
 		with open('songs.pickle', 'wb') as f:
 			pickle.dump(self.songlist, f)
 		self.playlist = self.songlist
 		self.tracklist['text'] = f'PlayList - {str(len(self.playlist))}'
 		self.list.delete(0, tk.END)
 		self.enumerate_songs()
-
+		
+	#Saves the song list to songs.pickle and updates the playlist and listbox.
 	def enumerate_songs(self):
+		#This method adds songs to the listbox.
 		for index, song in enumerate(self.playlist):
 			self.list.insert(index, os.path.basename(song))
 
-
+	#Inserts each song into the listbox.
 	def play_song(self, event=None):
+		#This method plays a selected song.
 		if event is not None:
 			self.current = self.list.curselection()[0]
 			for i in range(len(self.playlist)):
 				self.list.itemconfigure(i, bg="white")
-
+		#If triggered by an event, sets the current song to the selected one 
+		#and resets the listbox item colors.
 		print(self.playlist[self.current])
 		mixer.music.load(self.playlist[self.current])
 		self.songtrack['anchor'] = 'w'
 		self.songtrack['text'] = os.path.basename(self.playlist[self.current])
-
+		
+		#Loads and displays the current song.
 		self.pause['image'] = play
 		self.paused = False
 		self.played = True
@@ -147,8 +165,9 @@ class Player(tk.Frame):
 		self.list.itemconfigure(self.current, bg='sky blue')
 
 		mixer.music.play()
-
+         #Updates the button image and states, highlights the current song, and starts playing it.
 	def pause_song(self):
+		#This method pauses or unpauses the song.
 		if not self.paused:
 			self.paused = True
 			mixer.music.pause()
